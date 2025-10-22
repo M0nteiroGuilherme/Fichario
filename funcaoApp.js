@@ -599,6 +599,15 @@ class FichaCompletaDND {
         this.EscolhaClasse = "";
         this.PersonagemDND = new Personagem(nomePersonagemDND);
 
+        this.AtributoBruto = {
+            Carisma: 0,
+            Constituição: 0,
+            Destreza: 0,
+            Força: 0,
+            Sabedoria: 0,
+            Inteligência: 0,
+        };
+
         this.Atributo = {
             Carisma: 0,
             Constituição: 0,
@@ -617,10 +626,11 @@ class FichaCompletaDND {
             Inteligência: 0,
         }
 
+        this.AtributoBruto    = {};
         this.TesteResistencia = {};
-        this.PericiasDND = {};
-        this.Combate = {};
-        this.Habilidades = {};
+        this.PericiasDND      = {};
+        this.Combate          = {};
+        this.Habilidades      = {};
 
 
         this.InicializarPropriedadesDaFicha();
@@ -694,30 +704,30 @@ const spansDosPontos = {
 /*========================================
 =      FUNÇÃO  HABILIDADES               =
 ========================================*/
-function SelecionarAtributosDND (AtributoBruto, AtributoEscolhido){
+function SelecionarAtributosDND (AtributoBrutoSelecionado, AtributoEscolhido){
 
-    if (AtributoBruto.value === "15") {
-        fichaDND.Atributo[AtributoEscolhido] = 15 
+    if (AtributoBrutoSelecionado.value === "15") {
+        fichaDND.AtributoBruto[AtributoEscolhido] = 15 
         quinze.innerText = "0";
 
-    }else if (AtributoBruto.value === "14") {
-        fichaDND.Atributo[AtributoEscolhido] = 14
+    }else if (AtributoBrutoSelecionado.value === "14") {
+        fichaDND.AtributoBruto[AtributoEscolhido] = 14
         catorze.innerText = "0";
 
-    }else if (AtributoBruto.value === "13") {
-        fichaDND.Atributo[AtributoEscolhido] = 13
+    }else if (AtributoBrutoSelecionado.value === "13") {
+        fichaDND.AtributoBruto[AtributoEscolhido] = 13
         treze.innerText = "0";
 
-    }else if (AtributoBruto.value === "12") {
-        fichaDND.Atributo[AtributoEscolhido] = 12
+    }else if (AtributoBrutoSelecionado.value === "12") {
+        fichaDND.AtributoBruto[AtributoEscolhido] = 12
         doze.innerText = "0";
         
-    }else if (AtributoBruto.value === "10") {
-        fichaDND.Atributo[AtributoEscolhido] = 10
+    }else if (AtributoBrutoSelecionado.value === "10") {
+        fichaDND.AtributoBruto[AtributoEscolhido] = 10
         dez.innerText = "0";
 
-    }else if (AtributoBruto.value === "8") {
-        fichaDND.Atributo[AtributoEscolhido] = 8
+    }else if (AtributoBrutoSelecionado.value === "8") {
+        fichaDND.AtributoBruto[AtributoEscolhido] = 8
         oito.innerText = "0";
     }
 }
@@ -732,7 +742,7 @@ ButtonAtributoDND.addEventListener("click", function () {
     SelecionarAtributosDND(pontoSabedoria, "Sabedoria")
     SelecionarAtributosDND(pontoInteligencia, "Inteligência")
     
-    console.table([fichaDND.Atributo])
+    console.table([fichaDND.AtributoBruto])
 
 })
 
@@ -764,32 +774,117 @@ atualizarVisibilidadeDosPontos();
 ========================================*/
 const EscolherRacaDNDHumano = document.getElementById("EscolherRacaDNDHumano")
 
+function ConvertendoAtributo (AtributoEscolhido){
+    if (fichaDND.AtributoBruto[AtributoEscolhido] == "1"   ){
+        fichaDND.Atributo[AtributoEscolhido] = 5
+    }
+    else if (fichaDND.AtributoBruto[AtributoEscolhido] == "2"  || fichaDND.AtributoBruto[AtributoEscolhido] == " 3"){
+        fichaDND.Atributo[AtributoEscolhido] = 4
+    }
+    else if (fichaDND.AtributoBruto[AtributoEscolhido] == "4"  || fichaDND.AtributoBruto[AtributoEscolhido] == " 5"){
+        fichaDND.Atributo[AtributoEscolhido] = 3
+    }
+    else if (fichaDND.AtributoBruto[AtributoEscolhido] == "6"  || fichaDND.AtributoBruto[AtributoEscolhido] == " 7"){
+        fichaDND.Atributo[AtributoEscolhido] = 2
+    }
+    else if (fichaDND.AtributoBruto[AtributoEscolhido] == "8"  || fichaDND.AtributoBruto[AtributoEscolhido] == " 9"){
+        fichaDND.Atributo[AtributoEscolhido] = 1
+    }
+    else if (fichaDND.AtributoBruto[AtributoEscolhido] == "10" || fichaDND.AtributoBruto[AtributoEscolhido] == " 11"){
+        fichaDND.Atributo[AtributoEscolhido] = 0
+    }
+    else if (fichaDND.AtributoBruto[AtributoEscolhido] == "12" || fichaDND.AtributoBruto[AtributoEscolhido] == " 13"){
+        fichaDND.Atributo[AtributoEscolhido] = 1
+    }
+    else if (fichaDND.AtributoBruto[AtributoEscolhido] == "14" || fichaDND.AtributoBruto[AtributoEscolhido] == " 15"){
+        fichaDND.Atributo[AtributoEscolhido] = 2
+    }
+    else if (fichaDND.AtributoBruto[AtributoEscolhido] == "16" || fichaDND.AtributoBruto[AtributoEscolhido] == "17"){
+        fichaDND.Atributo[AtributoEscolhido] = 3
+    }
+    else if (fichaDND.AtributoBruto[AtributoEscolhido] == "18" || fichaDND.AtributoBruto[AtributoEscolhido] == "19"){
+        fichaDND.Atributo[AtributoEscolhido] = 4
+    }
+    else if (fichaDND.AtributoBruto[AtributoEscolhido] == "20" || fichaDND.AtributoBruto[AtributoEscolhido] == "21"){
+        fichaDND.Atributo[AtributoEscolhido] = 5
+    }
+    else if (fichaDND.AtributoBruto[AtributoEscolhido] == "22" || fichaDND.AtributoBruto[AtributoEscolhido] == "23"){
+        fichaDND.Atributo[AtributoEscolhido] = 6
+    }
+    else if (fichaDND.AtributoBruto[AtributoEscolhido] == "24" || fichaDND.AtributoBruto[AtributoEscolhido] == "15"){
+        fichaDND.Atributo[AtributoEscolhido] = 7 
+    }
+    else if (fichaDND.AtributoBruto[AtributoEscolhido] == "26" || fichaDND.AtributoBruto[AtributoEscolhido] == "27"){
+        fichaDND.Atributo[AtributoEscolhido] = 8
+    }
+    else if (fichaDND.AtributoBruto[AtributoEscolhido] == "28" || fichaDND.AtributoBruto[AtributoEscolhido] == "29"){
+        fichaDND.Atributo[AtributoEscolhido] = 9
+    }
+    else if (AtributoBruto == "30" ){
+        fichaDND.Atributo[AtributoEscolhido] = 10
+    }
+
+}
 
 function SelecionandoRaca(RaçaEscolhida, SubRaçaEscolhida, Habilidade1, Valor1, Habilidade2, Valor2,){
     fichaDND.PersonagemDND.Raça     = RaçaEscolhida
     fichaDND.PersonagemDND.Sub_Raça = SubRaçaEscolhida
 
 
-    fichaDND.Atributo[Habilidade1] += Valor1
+    fichaDND.AtributoBruto[Habilidade1] += Valor1
 
-    fichaDND.Atributo[Habilidade2] += Valor2
+    fichaDND.AtributoBruto[Habilidade2] += Valor2
+
+    console.table([fichaDND.AtributoBruto])
+
+    ConvertendoAtributo("Carisma")
+    ConvertendoAtributo("Constituição")
+    ConvertendoAtributo("Destreza")
+    ConvertendoAtributo("Força")
+    ConvertendoAtributo("Inteligência")
+    ConvertendoAtributo("Sabedoria")
 
     console.table([fichaDND.Atributo])
-
     console.table([fichaDND.PersonagemDND])
 }
 
 EscolherRacaDNDHumano.addEventListener("click", function(){
-    fichaDND.Atributo.Carisma      += 1
-    fichaDND.Atributo.Constituição += 1
-    fichaDND.Atributo.Destreza     += 1
-    fichaDND.Atributo.Força        += 1
-    fichaDND.Atributo.Inteligência += 1
-    fichaDND.Atributo.Sabedoria    += 1
+    fichaDND.AtributoBruto.Carisma      += 1
+    fichaDND.AtributoBruto.Constituição += 1
+    fichaDND.AtributoBruto.Destreza     += 1
+    fichaDND.AtributoBruto.Força        += 1
+    fichaDND.AtributoBruto.Inteligência += 1
+    fichaDND.AtributoBruto.Sabedoria    += 1
 
-    fichaDND.PersonagemDND.Raça     = "Humano"
+    fichaDND.PersonagemDND.Raça = "Humano"
+
+    console.table([fichaDND.AtributoBruto])
+
+    console.table([fichaDND.PersonagemDND])
+
+    ConvertendoAtributo("Carisma")
+    ConvertendoAtributo("Constituição")
+    ConvertendoAtributo("Destreza")
+    ConvertendoAtributo("Força")
+    ConvertendoAtributo("Inteligência")
+    ConvertendoAtributo("Sabedoria")
 
     console.table([fichaDND.Atributo])
 
-    console.table([fichaDND.PersonagemDND])
 })
+
+function VidaPersonagem (vidadInicial){
+    
+    const Hp = fichaDND.Atributo.Constituição.valueOf()
+
+    fichaDND.PersonagemDND.Vida =    + Hp
+
+    console.table([fichaDND.PersonagemDND])
+}
+
+function dados(LadosDeDados){
+    const max = LadosDeDados +1
+    const dado12 = Math.floor(Math.random() * max)
+
+}
+
