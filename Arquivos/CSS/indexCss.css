@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+:root {
+
+    --color-primary: #00ff40;
+    --color-segundaria: #01250a;
+    --color-hoverButton:#091809;
+}
+
+* {
+    font-family: "Roboto Condensed", sans-serif;
+    color: var(--color-primary);
+}
+
+body {
+    background-color: black;
+
+}
+
+.Tab {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px dashed var(--color-primary);
+    /*ridge thick thin*/
+}
+
+.OpcaoTab {
+    display: flex;
+
+}
+
+
+#DivCriar,
+#DivVer {
+    display: none;
+}
+
+.bnt {
+    cursor: pointer;
+    padding-left: 20px;
+}
+
+.ContAtributo {
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    width: 20%;
+}
+
+
+
+.InputAtributos {
+
+    border: none;
+    border-bottom: var(--color-primary) solid 1px;
+    background: none;
+    margin: 2px;
+    width: 80px;
+    font-size: 25px;
+    padding: 0;
+    text-align: center;
+}
+
+.bnt1 {
+    font-size: 25px;
+    border-style: none;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    background-color: var(--color-primary);
+    color: black;
+}
+
+
+.bnt1:hover {
+    transition: 0.5 s;
+    background-color: var(--color-hoverButton);
+    color: var(--color-primary);
+}
+
+.Combatente,
+.Especialista,
+.Ocultista,
+.Mundano {
+    padding: 10px;
+    margin: 10px;
+    background-color: var(--color-segundaria);
+    border-radius: 10px;
+}
+
+#DivClassOP {
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+
+    align-self: center;
+    display: flex;
+    align-items: center;
+}
+
+
+#ContinerOrigem {
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    display: none;
+    align-self: center;
+    align-items: center;
+}
+
+
+
+.OrigensInsfos {
+    margin-bottom: 1rem;
+    padding: 12px;
+    border-radius: 15px;
+    background-color: var(--color-segundaria);
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+}
+
+#DivAcademico,
+#DivAgenteSaude,
+#DivAmnesico,
+#DivArtista,
+#DivAtleta,
+#DivChef,
+#DivCientistaForense,
+#DivCriminoso,
+#DivCultistaArrependido,
+#DivDesgarrado,
+#DivDuble,
+#DivEngenheiro,
+#DivEscritor,
+#DivExecutivo,
+#DivGauderioAbutre,
+#DivGinasta,
+#DivInvestigador,
+#DivInvestigador,
+#DivLutador,
+#DivMagnata,
+#DivMercenario,
+#DivMilitar,
+#DivOperario,
+#DivPolicial,
+#DivProfessor,
+#DivReligioso,
+#DivRevoltado,
+#DivServidorPublico,
+#DivTI,
+#DivTrabalhadorRural,
+#DivTrambiqueiro,
+#DivUniversitario,
+#DivVitima,
+#DivJornalista,
+#DivTeoricoConspiracao{
+    display: none;
+}
+                
+[id^="Mostra"] {
+  cursor: pointer;
+  user-select: none; 
+}
+
+
+
+.DivCaracteristicas {
+    height: 20rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-right: .5rem;
+}
+
+
+
+.InputTQ {
+    font-size: 16px;
+    color: var(--color-primary);
+    border-radius: 5px;
+    border: var(--color-primary) solid 1px;
+    background-color: var(--color-segundaria);
+    padding: .5rem;
+    width: 100%
+}
+
+.textareaTF {
+    font-size: 16px;
+    color: var(--color-primary);
+    border-radius: 5px;
+    border: var(--color-primary) solid 1px;
+    background-color: var(--color-segundaria);
+    padding: .5rem;
+    min-height: 8.25rem;
+    width: 100%;
+}
+
+
+::-webkit-scrollbar {
+    /* 1 */
+    width: 6px;
+    background-color: var(--color-segundaria);
+}
+
+::-webkit-scrollbar-button {
+    /* 2 */
+}
+
+::-webkit-scrollbar-track {
+    /* 3 */
+}
+
+::-webkit-scrollbar-track-piece {
+    /* 4 */
+}
+
+::-webkit-scrollbar-thumb {
+    /* 5 */
+    border-radius: 10px;
+    margin: 1px;
+    width: 1px;
+    height: 10px;
+    background-color: var(--color-primary);
+}
+
+::-webkit-scrollbar-corner {
+    /* 6 */
+}
+
+::-webkit-resizer {
+    /* 7 */
+}
+
+.DivaTributosDnD{
+   
+}
+
+.dropdown{
+    width: 43px;
+    height: 9%;
+    text-align: center;
+    font-size: 25px;
+    margin: 10px;
+    border: none;
+    border-bottom: var(--color-primary) solid 1px;
+    background: #ff000000;
+    color: var(--color-primary);
+}
+
+
+
+.opcaoDosAtributos{
+    transform: translateY(0);
+    opacity: 1;
+    width: 42px;
+    background-color: var(--color-segundaria);
+    display: grid;
+    z-index: 10;
+    position: absolute;
+    text-align: center;
+}
+
+.opcaoNum{
+    font-size: 25px;
+    border:none ;
+    color: var(--color-primary);
+    background-color: #ffffff00;
+}
+
+#opcaoCarisma,
+#opcaoConstituicao,
+#DivDestreza,
+#DivForca,
+#DivSabedoria,
+#DivInteligencia{
+    display:none;
+}
+
+#atributoDND{
+        margin-top: 10%;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+}
+
+#DivAnao,
+#DivElfo,
+#DivHalfling,
+#DivHumano,
+#DivDraconato,
+#DivGnomo,
+#DivMeioElfo,
+#DivMeioOrc,
+#DivTiefling{
+    display: none;
+}
+
+.CardsRacaDND{
+    margin-bottom: 1rem;
+    padding: 12px;
+    border-radius: 15px;
+    background-color: var(--color-segundaria);
+}
+
+#DivRacaDND{
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+
+    align-self: center;
+    align-items: center;
+}

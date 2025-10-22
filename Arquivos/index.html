@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Meu App Electron!</title>
+  <link rel="stylesheet" href="CSS/indexCss.css">
+
+</head>
+
+<body>
+  <div class="Tab">
+    <div>
+      <h1>Fichario</h1>
+    </div>
+    <div class="OpcaoTab">
+      <h2 class="bnt" id="ButtonCriar" onclick="MostrarCriar()">Criar Personagem</h2>
+      <h2 class="bnt" onclick="MostrarVer()">Ver Personagem</h2>
+    </div>
+  </div>
+
+  <div class="Meio" style="padding: 20px;">
+
+    <div id="DivCriar">
+
+      <div id="divEscolha">
+        <h2>Escolha seu sistema</h2>
+        <div style="display: flex;">
+          <h2 class="bnt" id="BntOP" onclick="MostrarOP()">Ordem Paranormal</h2>
+          <h2 class="bnt" id="BntDnD" onclick="MostrarDND()">D&D</h2>
+        </div>
+      </div>
+
+      <div id="DivOP">
+
+
+        <div id="ContinerAtributo"
+          style="display: flex; margin: 10px; align-items: center; align-self: center;  justify-content: center;">
+
+          <div style="display: flex; align-items: center; align-self: center;  justify-content: center; width: 50%;">
+            <p style="font-size:  25px; width: 50%;"> Voce tem <span id="MostarPontosAtributos">9</span> pontos para
+              colocar. O valor máximo inicial que você
+              pode ter em cada atributo é 3</p>
+          </div>
+
+          <div class="ContAtributo" id="ContAtributo">
+            <div>
+
+              <div style="display: flex;">
+                <input type="number" value="1" min="1" max="3" class="InputAtributos" placeholder="1" name=""
+                  id="Agilidade"></input>
+                <h3 style="margin-left: 10px;">Agilidade</h3>
+              </div>
+
+              <div style="display: flex;">
+                <input type="number" value="1" min="1" max="3" class="InputAtributos" placeholder="1" name=""
+                  id="Forca"></input>
+                <h3 style="margin-left: 10px;">Força</h3>
+              </div>
+
+              <div style="display: flex;">
+                <input type="number" value="1" min="1" max="3" class="InputAtributos" placeholder="1" name=""
+                  id="Presena"></input>
+                <h3 style="margin-left: 10px;">Presença</h3>
+              </div>
+
+              <div style="display: flex;">
+                <input type="number" value="1" min="1" max="3" class="InputAtributos" placeholder="1" name=""
+                  id="Vigor"></input>
+                <h3 style="margin-left: 10px;">Vigor</h3>
+              </div>
+
+              <div style="display: flex;">
+                <input type="number" value="1" min="1" max="3" class="InputAtributos" placeholder="1" name=""
+                  id="Intelecto"></input>
+                <h3 style="margin-left: 10px;">Intelecto</h3>
+              </div>
+
+              <button id="submit" class="bnt1" style="margin-top: 4%;">Continuar</button>
+
+            </div>
+          </div>
+        </div>
+
+        <div id="ContinerOrigem">
+          <div style="width: 50%;">
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraAcademico">V</h3>
+                  <H2 style="margin-left: 10px;">Acadêmico</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPAcademico">Escolher</button>
+              </div>
+              <div id="DivAcademico" style="word-wrap: break-word;">
+                <p>Você era um pesquisador ou professor universitário. De forma proposital ou não, seus estudos tocaram
+                  em
+                  assuntos misteriosos e chamaram a atenção da Ordo Realitas.
+                  <br><br>
+                  Perícias treinadas. Ciências e Investigação.
+                  <br><br>
+                  Saber é Poder. Quando faz um teste usando Intelecto, você pode gastar 2 PE para receber +5 nesse teste
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraAgenteSaude">V</h3>
+                  <H2 style="margin-left: 10px;">Agente de Saúde</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPAgenteSaude">Escolher</button>
+              </div>
+              <div id="DivAgenteSaude" style="word-wrap: break-word;">
+                <p>Você era um profissional da saúde como um enfermeiro, farmacêutico, médico, psicólogo ou socorrista,
+                  treinado no atendimento e cuidado de pessoas. Você pode ter sido surpreendido por um evento paranormal
+                  durante o trabalho ou mesmo cuidado de um agente da Ordem em uma emergência, que ficou surpreso com o
+                  quão bem você lidou com a situação.
+                  <br><br>
+                  Perícias treinadas. Intuição e Medicina.
+                  <br><br>
+                  Técnica Medicinal. Sempre que cura um personagem, você adiciona seu Intelecto no total de PV curados.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraAmnesico">V</h3>
+                  <H2 style="margin-left: 10px;">Amnésico</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPAmnesico">Escolher</button>
+              </div>
+              <div id="DivAmnesico" style="word-wrap: break-word;">
+                <p>Você perdeu a maior parte da memória. Sabe apenas o próprio nome, ou nem isso. Sua amnésia pode ser
+                  resultado de um trauma paranormal ou mesmo de um ritual. Talvez você tenha sido vítima de cultistas?
+                  Talvez você tenha sido um cultista? Seja como for, hoje a Ordem é a única família que conhece. Quem
+                  sabe, cumprindo missões, você descubra algo sobre seu passado.
+                  <br><br>
+                  Perícias treinadas. Ciências e Investigação.
+                  <br><br>
+                  Saber é Poder. Quando faz um teste usando Intelecto, você pode gastar 2 PE para receber +5 nesse teste
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraArtista">V</h3>
+                  <H2 style="margin-left: 10px;">Artista</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPArtista">Escolher</button>
+              </div>
+              <div id="DivArtista" style="word-wrap: break-word;">
+                <p>Você era um ator, músico, escritor, dançarino, influenciador... Seu trabalho pode ter sido inspirado
+                  por uma experiência paranormal do passado e o que o público acha que é pura criatividade, a Ordem sabe
+                  que tem um lado mais sombrio.
+                  <br><br>
+                  Perícias treinadas. Artes e Enganação.
+                  <br><br>
+                  Magnum Opus. Você é famoso por uma de suas obras. Uma vez por missão, pode determinar que um
+                  personagem envolvido em uma cena de interação o reconheça. Você recebe +5 em testes de Presença e de
+                  perícias baseadas em Presença contra aquele personagem. A critério do mestre, pode receber esses bônus
+                  em outras situações nas quais seria reconhecido.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraAtleta">V</h3>
+                  <H2 style="margin-left: 10px;">Atleta</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPAtleta">Escolher</button>
+              </div>
+              <div id="DivAtleta" style="word-wrap: break-word;">
+                <p>
+                  Você competia em um esporte individual ou por equipe, como natação ou futebol. Seu alto desempenho
+                  pode ser fruto de alguma influência paranormal que nem mesmo você conhecia ou você pode ter se
+                  envolvido em algum evento paranormal em uma de suas competições.
+                  <br><br>
+                  Perícias treinadas. Acrobacia e Atletismo.
+                  <br><br>
+                  110%. Quando faz um teste de perícia usando Força ou Agilidade (exceto Luta e Pontaria) você pode
+                  gastar 2 PE para receber +5 nesse teste.
+                </p>
+              </div>
+            </div>
+
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraChef">V</h3>
+                  <H2 style="margin-left: 10px;">Chef</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPChef">Escolher</button>
+              </div>
+              <div id="DivChef" style="word-wrap: break-word;">
+                <p>
+                  Você é um cozinheiro amador ou profissional. Talvez trabalhasse em um restaurante, talvez simplesmente
+                  gostasse de cozinhar para a família e amigos. Como sua comida fez com que você se envolvesse com o
+                  paranormal? Ninguém sabe. Mas os outros agentes adoram quando você vai para a missão!
+
+                  <br><br>
+                  Perícias treinadas. Fortitude e Profissão (cozinheiro).
+                  <br><br>
+                  Ingrediente Secreto. Em cenas de interlúdio, você pode fazer a ação alimentar-se para cozinhar um
+                  prato especial. Você, e todos os membros do grupo que fizeram a ação alimentar-se, recebem o benefício
+                  de dois pratos (caso o mesmo benefício seja escolhido duas vezes, seus efeitos se acumulam).
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraCientistaForense">V</h3>
+                  <H2 style="margin-left: 10px;">Cientista Forense</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPCientistaForense">Escolher</button>
+              </div>
+              <div id="DivCientistaForense" style="word-wrap: break-word;">
+                <p>
+                  Você trabalhava coletando provas para a resolução de crimes, seja para a polícia, seja para uma
+                  empresa privada de investigação. Usava métodos e técnicas adquiridos através de uma graduação em uma
+                  área científica ou médica, além de cursos específicos. Recrutado para a Ordem por seus conhecimentos
+                  técnicos, seu trabalho não mudou muito - mas o tipo de que você investiga, sim.
+                  <br><br>
+                  Perícias treinadas. Ciências e Investigação..
+                  <br><br>
+                  Investigação Científica. Uma vez por cena de investigação, você pode gastar uma ação livre para
+                  procurar pistas, usando Ciências no lugar da perícia que seria usada para tentar encontrar a pista em
+                  questão.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraCriminoso">V</h3>
+                  <H2 style="margin-left: 10px;">Criminoso</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPCriminoso">Escolher</button>
+              </div>
+              <div id="DivCriminoso" style="word-wrap: break-word;">
+                <p>
+                  Você vivia uma vida fora da lei, seja como mero batedor de carteiras, seja como membro de uma facção
+                  criminosa. Em algum momento, você se envolveu em um assunto da Ordem — talvez tenha roubado um item
+                  amaldiçoado? A organização, por sua vez, achou melhor recrutar seus talentos do que ter você como um
+                  estorvo.
+                  <br><br>
+                  Perícias treinadas. Crime e Furtividade.
+                  <br><br>
+                  O Crime Compensa. No final de uma missão, escolha um item encontrado na missão. Em sua próxima missão,
+                  você pode incluir esse item em seu inventário sem que ele conte em seu limite de itens por patente.
+                  questão.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraCultistaArrependido">V</h3>
+                  <H2 style="margin-left: 10px;">Cultista Arrependido</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPCultistaArrependido">Escolher</button>
+              </div>
+              <div id="DivCultistaArrependido" style="word-wrap: break-word;">
+                <p>
+                  Você fez parte de um culto paranormal. Talvez fossem ignorantes iludidos, que acreditavam estar
+                  contatando entidades benevolentes. Talvez soubessem exatamente o que estavam fazendo. Seja como for,
+                  algo abriu seus olhos e agora você luta pelo lado certo — embora carregue para sempre traços de sua
+                  vida pregressa. Outros membros da Ordem podem desconfiar de sua conversão e você sabe que precisará se
+                  esforçar para conquistar a confiança de todos.
+                  <br><br>
+                  Perícias treinadas. Ocultismo e Religião.
+                  <br><br>
+                  Traços do Outro Lado. Você possui um poder paranormal à sua escolha. Porém, começa o jogo com metade
+                  da Sanidade normal para sua classe.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraDesgarrado">V</h3>
+                  <H2 style="margin-left: 10px;">Desgarrado</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPDesgarrado">Escolher</button>
+              </div>
+              <div id="DivDesgarrado" style="word-wrap: break-word;">
+                <p>
+                  Você não vivia de acordo com as normas da sociedade. Podia ser um eremita, uma pessoa em situação de
+                  rua ou simplesmente alguém que descobriu o Paranormal e abandonou sua rotina — sabendo o quão frágil
+                  era a existência humana, não conseguia simplesmente continuar indo para o trabalho todo o dia. De
+                  qualquer forma, a vida sem os confortos modernos o deixou mais forte.
+                  <br><br>
+                  Perícias treinadas. Fortitude e Sobrevivência.
+                  <br><br>
+                  Calejado. Você recebe +1 PV para cada 5% de NEX.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraDuble">V</h3>
+                  <H2 style="margin-left: 10px;">Dublê</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPDuble">Escolher</button>
+              </div>
+              <div id="DivDuble" style="word-wrap: break-word;">
+                <p>
+                  Você sempre combinou um gosto por alta velocidade, manobras ousadas e esportes radicais com uma total
+                  falta de noção do perigo. Sua busca incessante por adrenalina o fez seguir carreira de dublê, uma
+                  profissão que lhe permitiu enfrentar o risco das mais diversas formas. Agora à serviço da Ordem, você
+                  enfim enfrentará o Medo verdadeiro e poderá colocar sua coragem - e suas peripécias - à prova como
+                  nunca.
+                  <br><br>
+                  Perícias treinadas. Pilotagem e Reflexos.
+                  <br><br>
+                  Destemido. Quando faz um teste de perícia para o qual uma falha terá como consequência direta dano ou
+                  uma condição negativa, você recebe +5 nesse teste.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraEngenheiro">V</h3>
+                  <H2 style="margin-left: 10px;">Engenheiro</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPEngenheiro">Escolher</button>
+              </div>
+              <div id="DivEngenheiro" style="word-wrap: break-word;">
+                <p>
+                  Enquanto os acadêmicos estão preocupados com teorias, você colocar a mão na massa, seja como
+                  engenheiro profissional, seja como inventor de garagem. Provavelmente você criou algum dispositivo
+                  paranormal que chamou a atenção da Ordem.
+                  <br><br>
+                  Perícias treinadas. Profissão e Tecnologia.
+                  <br><br>
+                  Ferramentas Favoritas. Um item a sua escolha (exceto armas) conta como uma categoria abaixo (por
+                  exemplo, um item de categoria II conta como categoria I para você).
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraEscritor">V</h3>
+                  <H2 style="margin-left: 10px;">Escritor</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPEscritor">Escolher</button>
+              </div>
+              <div id="DivEscritor" style="word-wrap: break-word;">
+                <p>
+                  Você ganhava a vida inventando mundos, pessoas e histórias - em outra palavras, escrevendo ficção. Em
+                  certo momento, seu trabalho tocou ou foi tocado pelo paranormal Talvez as suas histórias tenham gerado
+                  Medo, talvez a inspiração para ela viesse do Outro Lado desde o início. Recrutado pela Ordem, você
+                  agora luta para que a vida real tenha o final feliz que seus livros não tiveram.
+                  <br><br>
+                  Perícias treinadas. Artes e Atualidades.
+                  <br><br>
+                  Bagagem de Leitura. Por seu trabalho, você já leu - e aprendeu - de tudo um pouco. Uma vez por cena,
+                  pode gastar 2 PE para se tornar treinado em uma perícia qualquer até o fim da cena.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraExecutivo">V</h3>
+                  <H2 style="margin-left: 10px;">Executivo</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPExecutivo">Escolher</button>
+              </div>
+              <div id="DivExecutivo" style="word-wrap: break-word;">
+                <p>
+                  Você possuía um trabalho de escritório em uma grande empresa, banco ou corporação. Era um
+                  administrador, advogado, contador ou de qualquer outra profissão que lida com papelada e burocracia.
+                  Sua vida era bastante normal, até que você descobriu algo que não devia. Talvez o sucesso da empresa
+                  residisse em um ritual? Talvez toda a corporação fosse fachada para um culto e o presidente, um líder
+                  cultista envolvido com entidades paranormais? Após essa descoberta, você foi recrutado pela Ordem e
+                  trocou seu trabalho de escritório por missões de campo — hoje, sua vida é tudo, menos normal.
+                  <br><br>
+                  Perícias treinadas. Diplomacia e Profissão.
+                  <br><br>
+                  Processo Otimizado. Sempre que faz um teste de perícia durante um teste estendido, ou uma ação para
+                  revisar documentos (físicos ou digitais), pode pagar 2 PE para receber +5 nesse teste.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraGauderioAbutre">V</h3>
+                  <H2 style="margin-left: 10px;">Gaudério Abutre</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPGauderioAbutre">Escolher</button>
+              </div>
+              <div id="DivGauderioAbutre" style="word-wrap: break-word;">
+                <p>
+                  Você fez parte dos valorosos Gaudérios Abutres. Mesmo longe do motoclube, ainda segue o lema "A gente
+                  morre por quem a gente ama".
+                  <br><br>
+                  Perícias treinadas. Luta e Pilotagem.
+                  <br><br>
+                  Fraternidade Gaudéria. Uma vez por rodada, quando um aliado adjacente é alvo de um ataque ou efeito,
+                  você pode gastar 1 PE para trocar de lugar com este aliado e se tornar o alvo deste ataque ou efeito.
+                  Se fizer isso, em seu próximo turno você recebe +2 em testes de ataque contra o agressor.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraGinasta">V</h3>
+                  <H2 style="margin-left: 10px;">Ginasta</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPGinasta">Escolher</button>
+              </div>
+              <div id="DivGinasta" style="word-wrap: break-word;">
+                <p>
+                  Desde muito jovem, você passou a maior parte de sua vida em ginásios (ou talvez em antigos templos
+                  monásticos) praticando as mais difíceis acrobacias. Sua preparação foi árdua e dolorosa, mas aprimorou
+                  seu corpo, sua técnica e sua disciplina. Recrutado pela Ordo Realitas, essas se tornaram suas
+                  principais ferramentas para enfrentar o Outro lado. E com elas, você planeja fazer as criaturas
+                  paranormais sofrerem muito mais do que você sofreu em seus treinos.
+                  <br><br>
+                  Perícias treinadas. Acrobacia e Reflexos.
+                  <br><br>
+                  Mobilidade Acrobática. Você recebe +2 na Defesa e seu deslocamento aumenta em +3m.
+                </p>
+              </div>
+
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraInvestigador">V</h3>
+                  <H2 style="margin-left: 10px;">Investigador</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPInvestigador">Escolher</button>
+              </div>
+              <div id="DivInvestigador" style="word-wrap: break-word;">
+                <p>
+                  Você era um investigador do governo, como um perito forense ou policial federal, ou privado, como um
+                  detetive particular. Pode ter tido contato com o Paranormal em algum caso ou ter sido recrutado pela
+                  Ordem por suas habilidades de resolução de mistérios.
+                  <br><br>
+                  Perícias treinadas. Investigação e Percepção.
+                  <br><br>
+                  Faro para Pistas. Uma vez por cena, quando fizer um teste para procurar pistas, você pode gastar 1 PE
+                  para receber +5 nesse teste.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraJornalista">V</h3>
+                  <H2 style="margin-left: 10px;">Jornalista</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPJornalista">Escolher</button>
+              </div>
+              <div id="DivJornalista" style="word-wrap: break-word;">
+                <p>
+                  Uma espécie ameaçada de extinção, você atuava investigando notícias para um jornal, rede de televisão,
+                  blog, canal do YouTube... Você se juntou à Ordem porque descobriu algo relacionado ao paranormal, ou
+                  foi recrutado para investigar um caso específico. Seja como for, continua buscando a verdade - não
+                  mais para informar as pessoas, mas sim para protegê-las.
+                  <br><br>
+                  Perícias treinadas. Atualidades e Investigação.
+                  <br><br>
+                  Fontes Confiáveis. Uma vez por sessão de jogo, você pode gastar 1 PE para contatar suas fontes -
+                  pessoas com acesso a informações nas quais você confia. Isso permite que você role novamente um teste
+                  já realizado para encontrar uma pista, com +5 de bônus, ou receba outra informação relevante (a
+                  critério do mestre)..
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraLutador">V</h3>
+                  <H2 style="margin-left: 10px;">Lutador</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPLutador">Escolher</button>
+              </div>
+              <div id="DivLutador" style="word-wrap: break-word;">
+                <p>
+                  Você pratica uma arte marcial ou esporte de luta, ou cresceu em um bairro perigoso onde aprendeu briga
+                  de rua. Já quebrou muitos ossos, tanto seus quanto dos outros. Pode ter conhecido a Ordem após um
+                  torneio secreto envolvendo entidades do Outro Lado ou ter sido recrutado pela sua capacidade de luta.
+                  <br><br>
+                  Perícias treinadas. Luta e Reflexos.
+                  <br><br>
+                  Mão Pesada. Você recebe +2 em rolagens de dano com ataques corpo a corpo.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraMagnata">V</h3>
+                  <H2 style="margin-left: 10px;">Magnata</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPMagnata">Escolher</button>
+              </div>
+              <div id="DivMagnata" style="word-wrap: break-word;">
+                <p>
+                  Você possui muito dinheiro ou patrimônio. Pode ser o herdeiro de uma família antiga ligada ao oculto,
+                  ter criado e vendido uma empresa e decidido usar sua riqueza para uma causa maior, ou ter ganho uma
+                  loteria após inadvertidamente escolher números amaldiçoados que formavam um ritual.
+                  <br><br>
+                  Perícias treinadas. Diplomacia e Pilotagem.
+                  <br><br>
+                  Patrocinador da Ordem. Seu limite de crédito é sempre considerado um acima do atual.
+
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraMercenario">V</h3>
+                  <H2 style="margin-left: 10px;">Mercenário</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPMercenario">Escolher</button>
+              </div>
+              <div id="DivMercenario" style="word-wrap: break-word;">
+                <p>
+                  Você é um soldado de aluguel, que trabalha sozinho ou como parte de alguma organização que vende
+                  serviços militares. Escoltas e assassinatos fizeram parte de sua rotina por tempo o suficiente para
+                  você se envolver em alguma situação com o Paranormal.
+                  <br><br>
+                  Perícias treinadas. Iniciativa e Intimidação.
+                  <br><br>
+                  Posição de Combate. No primeiro turno de cada cena de ação, você pode gastar 2 PE para receber uma
+                  ação de movimento adicional.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraMilitar">V</h3>
+                  <H2 style="margin-left: 10px;">Militar</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPMilitar">Escolher</button>
+              </div>
+              <div id="DivMilitar" style="word-wrap: break-word;">
+                <p>
+                  Pedreiro, industriário, operador de máquinas em uma fábrica… Você passou uma parte de sua vida em um
+                  emprego braçal, desempenhando atividades práticas que lhe deram uma visão pragmática do mundo. Sua
+                  rotina mundana, entretanto, foi confrontada de alguma forma pelo paranormal, e você não consegue mais
+                  esquecer tudo que viu sobre os mistérios do mundo.
+                  <br><br>
+                  Perícias treinadas. Fortitude e Profissão.
+                  <br><br>
+                  Para Bellum. Você recebe +2 em rolagens de dano com armas de fogo.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraOperario">V</h3>
+                  <H2 style="margin-left: 10px;">Operário</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPOperario">Escolher</button>
+              </div>
+              <div id="DivOperario" style="word-wrap: break-word;">
+                <p>
+                  Pedreiro, industriário, operador de máquinas em uma fábrica… Você passou uma parte de sua vida em um
+                  emprego braçal, desempenhando atividades práticas que lhe deram uma visão pragmática do mundo. Sua
+                  rotina mundana, entretanto, foi confrontada de alguma forma pelo paranormal, e você não consegue mais
+                  esquecer tudo que viu sobre os mistérios do mundo.
+                  <br><br>
+                  Perícias treinadas. Fortitude e Profissão.
+                  <br><br>
+                  Ferramenta de Trabalho. Escolha uma arma simples ou tática que, a critério do mestre, poderia ser
+                  usada como ferramenta em sua profissão (como uma marreta para um pedreiro). Você sabe usar a arma
+                  escolhida e recebe +1 em testes de ataque, rolagens de dano e margem de ameaça com ela.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraPolicial">V</h3>
+                  <H2 style="margin-left: 10px;">Policial</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPPolicial">Escolher</button>
+              </div>
+              <div id="DivPolicial" style="word-wrap: break-word;">
+                <p>
+                  Pedreiro, industriário, operador de máquinas em uma fábrica… Você passou uma parte de sua vida em um
+                  emprego braçal, desempenhando atividades práticas que lhe deram uma visão pragmática do mundo. Sua
+                  rotina mundana, entretanto, foi confrontada de alguma forma pelo paranormal, e você não consegue mais
+                  esquecer tudo que viu sobre os mistérios do mundo.
+                  <br><br>
+                  Perícias treinadas. Fortitude e Profissão.
+                  <br><br>
+                  Ferramenta de Trabalho. Escolha uma arma simples ou tática que, a critério do mestre, poderia ser
+                  usada como ferramenta em sua profissão (como uma marreta para um pedreiro). Você sabe usar a arma
+                  escolhida e recebe +1 em testes de ataque, rolagens de dano e margem de ameaça com ela.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraProfessor">V</h3>
+                  <H2 style="margin-left: 10px;">Professor</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPProfessor">Escolher</button>
+              </div>
+              <div id="DivProfessor" style="word-wrap: break-word;">
+                <p>
+                  Você leciona em uma escola ou universidade, ensinando ciências, artes ou outro campo do saber. Sua
+                  profissão é uma das mais nobres de todas e o colocou em contato com muitas pessoas e conhecimentos. Em
+                  algum momento, o colocou em contato também com o paranormal. Agora, trabalhando na Ordem, seus alunos
+                  são criaturas do Outro Lado, e você planeja reprovar todos esse ano.
+                  <br><br>
+                  Perícias treinadas. Ciências e Intuição.
+                  <br><br>
+                  Aula de Campo. Você sabe extrair o melhor das pessoas. Uma vez por cena, pode gastar uma ação padrão e
+                  2 PE para fornecer +1 em um atributo de outro personagem em alcance curto até o fim da cena.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraReligioso">V</h3>
+                  <H2 style="margin-left: 10px;">Religioso</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPReligioso">Escolher</button>
+              </div>
+              <div id="DivReligioso" style="word-wrap: break-word;">
+                <p>
+                  Você é devoto ou sacerdote de uma fé. Independentemente da religião que pratica, se dedica a auxiliar
+                  as pessoas com problemas espirituais. A partir disso, teve contato com o paranormal, o que fez com que
+                  fosse convocado pela Ordem.
+                  <br><br>
+                  Perícias treinadas. Religião e Vontade.
+                  <br><br>
+                  Acalentar. Você recebe +5 em testes de Religião para acalmar. Além disso, quando acalma uma pessoa,
+                  ela recebe um número de pontos de Sanidade igual a 1d6 + a sua Presença
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraRevoltado">V</h3>
+                  <H2 style="margin-left: 10px;">Revoltado</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPRevoltado">Escolher</button>
+              </div>
+              <div id="DivRevoltado" style="word-wrap: break-word;">
+                <p>
+                  Alguma coisa aconteceu em sua juventude que fez com que você se rebelasse contra o mundo ao seu redor.
+                  Talvez seus parentes tenham sido ausentes, por escolha ou por algum evento trágico, talvez outra perda
+                  tenha marcado seu coração. Qualquer que seja a razão, você possui iguais doses de rebeldia e
+                  independência e, acima de tudo, aprendeu a se virar sozinho. Recrutado pela Ordem, você luta por
+                  vingança - ou para que outros não passem pelo que você passou.
+                  <br><br>
+                  Perícias treinadas. Furtividade e Vontade.
+                  <br><br>
+                  Antes Só. Você recebe +1 na Defesa, em testes de perícias e em seu limite de PE por turno se estiver
+                  sem nenhum aliado em alcance curto.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraServidorPublico">V</h3>
+                  <H2 style="margin-left: 10px;">Servidor Público</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPServidorPublico">Escolher</button>
+              </div>
+              <div id="DivServidorPublico" style="word-wrap: break-word;">
+                <p>
+                  Você possuía carreira em um órgão do governo, lidando com burocracia e atendendo pessoas. Sua rotina
+                  foi quebrada quando você viu que o prefeito era um cultista ou que a câmara de vereadores se reunia à
+                  noite para realizar rituais. Quando os próprios representantes do povo estão dispostos a sacrificá-lo
+                  para entidades malignas, onde reside nossa esperança? Hoje, você sabe a resposta para essa pergunta:
+                  na Ordo Realitas.
+                  <br><br>
+                  Perícias treinadas. Intuição e Vontade.
+                  <br><br>
+                  Espírito Cívico. Sempre que faz um teste para ajudar, você pode gastar 1 PE para aumentar o bônus
+                  concedido em +2.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraTeoricoConspiracao">V</h3>
+                  <H2 style="margin-left: 10px;">Teórico da Conspiração</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPTeoricoConspiracao">Escolher</button>
+              </div>
+              <div id="DivTeoricoConspiracao" style="word-wrap: break-word;">
+                <p>
+                  A humanidade nunca pisou na lua. Reptilianos ocupam importantes cargos públicos. A Terra é plana... E
+                  secretamente governada pelos Illuminati. Você sabe isso tudo, pois investigou a fundo esses
+                  importantes assuntos. Quando sua pesquisa esbarrou no Paranormal, você foi recrutado. Na Ordem, sua
+                  loucura determinação será usada para um bom propósito.
+                  <br><br>
+                  Perícias treinadas. Investigação e Ocultismo.
+                  <br><br>
+                  Eu Já Sabia. Você não se abala com entidades ou anomalias. Afinal, sempre soube que isso tudo existia.
+                  Você recebe resistência a dano mental igual ao seu Intelecto.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraTI">V</h3>
+                  <H2 style="margin-left: 10px;">T.I.</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPTI">Escolher</button>
+              </div>
+              <div id="DivTI" style="word-wrap: break-word;">
+                <p>
+                  Programador, engenheiro de software ou simplesmente “o cara da T.I.”, você tem treinamento e
+                  experiência para lidar com sistemas informatizados. Seu talento (ou curiosidade exagerada) chamou a
+                  atenção da Ordem.
+                  <br><br>
+                  Perícias treinadas. Investigação e Tecnologia.
+                  <br><br>
+                  Motor de Busca. A critério do Mestre, sempre que tiver acesso a internet, você pode gastar 2 PE para
+                  substituir um teste de perícia qualquer por um teste de Tecnologia.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraTrabalhadorRural">V</h3>
+                  <H2 style="margin-left: 10px;">Trabalhador Rural</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPTrabalhadorRural">Escolher</button>
+              </div>
+              <div id="DivTrabalhadorRural" style="word-wrap: break-word;">
+                <p>
+                  Você trabalhava no campo ou em áreas isoladas, como fazendeiro, pescador, biólogo, veterinário... Você
+                  se acostumou com o convívio com a natureza e os animais e talvez tenha ouvido uma ou outra história de
+                  fantasmas ao redor da fogueira. Em algum momento da sua vida, porém, descobriu que muitas dessas
+                  histórias são verdadeiras.
+                  <br><br>
+                  Perícias treinadas. Adestramento e Sobrevivência.
+                  <br><br>
+                  Desbravador. Quando faz um teste de Adestramento ou Sobrevivência, você pode gastar 2 PE para receber
+                  +5 nesse teste. Além disso, você não sofre penalidade em deslocamento por terreno difícil.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraTrambiqueiro">V</h3>
+                  <H2 style="margin-left: 10px;">Trambiqueiro</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPTrambiqueiro">Escolher</button>
+              </div>
+              <div id="DivTrambiqueiro" style="word-wrap: break-word;">
+                <p>
+                  Uma vida digna exige muito trabalho, então é melhor nem tentar. Você vivia de pequenos golpes,
+                  jogatina ilegal e falcatruas. Certo dia, enganou a pessoa errada; no dia seguinte, se viu servindo à
+                  Ordem. Pelo menos agora tem a chance de usar sua lábia para o bem.
+                  <br><br>
+                  Perícias treinadas. Crime e Enganação.
+                  <br><br>
+                  Impostor. Uma vez por cena, você pode gastar 2 PE para substituir um teste de perícia qualquer por um
+                  teste de Enganação.
+                </p>
+              </div>
+            </div>
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraUniversitario">V</h3>
+                  <H2 style="margin-left: 10px;">Universitário</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPUniversitario">Escolher</button>
+              </div>
+              <div id="DivUniversitario" style="word-wrap: break-word;">
+                <p>
+                  Você era aluno de uma faculdade. Em sua rotina de estudos, provas e festas, acabou descobrindo algo —
+                  talvez um livro amaldiçoado na antiga biblioteca do campus? Por seu achado, foi convocado pela Ordem.
+                  Agora, estuda com mais afinco: nesse novo curso, ouviu dizer que as provas podem ser mortais.
+                  <br><br>
+                  Perícias treinadas. Atualidades e Investigação.
+                  <br><br>
+                  Dedicação. Você recebe +1 PE, e mais 1 PE adicional a cada NEX ímpar (15%, 25%...). Além disso, seu
+                  limite de PE por turno aumenta em 1 (em NEX 5% seu limite é 2, em NEX 10% é 3 e assim por diante; isso
+                  não afeta a DT de seus efeitos).
+                </p>
+              </div>
+            </div>
+
+
+            <div class="OrigensInsfos">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraVitima">V</h3>
+                  <H2 style="margin-left: 10px;">Vítima</H2>
+                </div>
+                <button class="bnt1" id="EscolherOrigeOPVitima">Escolher</button>
+              </div>
+              <div id="DivVitima" style="word-wrap: break-word;">
+                <p>
+                  Em algum momento de sua vida — infância, juventude ou início da vida adulta — você encontrou o
+                  Paranormal... E a experiência não foi nada boa. Você viu os espíritos dos mortos, foi atacado por uma
+                  entidade ou mesmo foi sequestrado para ser sacrificado em um ritual impedido no último momento. A
+                  experiência foi traumática, mas você não se abateu; em vez disso, decidiu lutar para impedir que
+                  outros inocentes passem pelo mesmo. E, já tendo sendo vítima do Paranormal, se tornou habilidoso em
+                  evitar perigos.
+                  <br><br>
+                  Perícias treinadas. Reflexos e Vontade.
+                  <br><br>
+                  Cicatrizes Psicológicas. Você recebe +1 de Sanidade para cada 5% de NEX.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div id="DivClassOP">
+          <div style="display: flex;">
+            <div class="Combatente">
+              <div>
+                <h1 style="border-bottom: 1px solid #00ff40;">Combatente</h1>
+                <div>
+                  <h2>CARACTERÍSTICAS</h2>
+                </div>
+
+                <div class="DivCaracteristicas">
+
+                  <div>
+                    <h4>PONTOS DE VIDA INICIAIS</h4>
+                    <p>20+VIGOR</p>
+                  </div>
+
+                  <div>
+                    <h5>A cada novo nível de exposição</h5>
+                    <h5>4 PV (+Vig)</h5>
+                  </div>
+
+                  <div>
+                    <h4>PONTOS DE ESFORÇO INICIAIS</h4>
+                    <p>2+PRESENÇA</p>
+                  </div>
+
+                  <div>
+                    <h5>A cada novo nível de exposição</h5>
+                    <h5>2 PE (+Pre)</h5>
+                  </div>
+
+                  <div>
+                    <h4>SANIDADE INICIAL</h4>
+                    <p>12</p>
+                  </div>
+
+                  <div>
+                    <h5>A cada novo nível de exposição</h5>
+                    <h5>3 SAN</h5>
+                  </div>
+
+                </div>
+
+              </div>
+              <button id="Combatente" class="bnt1" style="margin-top: 4%;">Continuar</button>
+            </div>
+
+            <div class="Especialista">
+              <div>
+                <h1 style="border-bottom: 1px solid #00ff40;">Especialista</h1>
+                <div>
+                  <div>
+                    <h2>CARACTERÍSTICAS</h2>
+                  </div>
+
+                  <div class="DivCaracteristicas">
+                    <div>
+                      <h4>PONTOS DE VIDA INICIAIS</h4>
+                      <p>16+VIGOR</p>
+                    </div>
+
+                    <div>
+                      <h5>A cada novo nível de exposição</h5>
+                      <h5>3 PV (+Vig)</h5>
+                    </div>
+
+                    <div>
+                      <h4>PONTOS DE ESFORÇO INICIAIS</h4>
+                      <p>3+PRESENÇA</p>
+                    </div>
+
+                    <div>
+                      <h5>A cada novo nível de exposição</h5>
+                      <h5>3 PE (+Pre)</h5>
+                    </div>
+
+                    <div>
+                      <h4>SANIDADE INICIAL</h4>
+                      <p>16</p>
+                    </div>
+
+                    <div>
+                      <h5>A cada novo nível de exposição</h5>
+                      <h5>4 SAN</h5>
+                    </div>
+                  </div>
+
+                </div>
+                <button id="Especialista" class="bnt1" style="margin-top: 4%;">Continuar</button>
+              </div>
+            </div>
+
+            <div class="Ocultista">
+              <div>
+                <h1 style="border-bottom: 1px solid #00ff40;">Ocultista</h1>
+                <div>
+                  <div>
+                    <h2>CARACTERÍSTICAS</h2>
+                  </div>
+                  <div class="DivCaracteristicas">
+                    <div>
+                      <h4>PONTOS DE VIDA INICIAIS</h4>
+                      <p>12+VIGOR</p>
+                    </div>
+
+                    <div>
+                      <h5>A cada novo nível de exposição</h5>
+                      <h5>2 PV (+Vig)</h5>
+                    </div>
+
+                    <div>
+                      <h4>PONTOS DE ESFORÇO INICIAIS</h4>
+                      <p>4+PRESENÇA</p>
+                    </div>
+
+                    <div>
+                      <h5>A cada novo nível de exposição</h5>
+                      <h5>4 PE (+Pre)</h5>
+                    </div>
+
+                    <div>
+                      <h4>SANIDADE INICIAL</h4>
+                      <p>20</p>
+                    </div>
+
+                    <div>
+                      <h5>A cada novo nível de exposição</h5>
+                      <h5>5 SAN</h5>
+                    </div>
+                  </div>
+
+                </div>
+                <button id="Ocultista" class="bnt1" style="margin-top: 4%;">Continuar</button>
+              </div>
+            </div>
+
+            <div class="Mundano">
+              <div>
+                <h1 style="border-bottom: 1px solid #00ff40;">Mundano </h1>
+                <div class="DivCaracteristicas">
+
+                  <div>
+                    <h2>CARACTERÍSTICAS</h2>
+                  </div>
+
+                  <div>
+                    <div>
+                      <h4>PONTOS DE VIDA INICIAIS</h4>
+                      <p>8+VIGOR</p>
+                    </div>
+
+                    <div>
+                      <h4>PONTOS DE ESFORÇO INICIAIS</h4>
+                      <p>1+PRESENÇA</p>
+                    </div>
+
+                    <div>
+                      <h4>SANIDADE INICIAL</h4>
+                      <p>8</p>
+                    </div>
+
+                  </div>
+                </div>
+                <button id="Mundano" class="bnt1" style="margin-top: 4%;">Continuar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="DivTQOP">
+          <div
+            style="align-items: center; align-self: center; justify-content: center; align-self: center; display: flex; align-items: center; ">
+            <div style="width: 70%;">
+              <div>
+
+                <h4>Personagem</h4>
+                <input id="NomePersonagem" name="NomePersonagem" class="InputTQ" type="text"
+                  placeholder="Nome do personagem">
+              </div>
+              <div>
+                <h4>Aparência</h4>
+                <textarea id="Aparencia" class="textareaTF"
+                  placeholder="Nome, gênero, idade, descrição física..."></textarea>
+              </div>
+              <div>
+                <h4>Personalidade</h4>
+                <textarea id="Personalidade" class="textareaTF"
+                  placeholder="Traços marcantes, opiniões, ideais..."></textarea>
+              </div>
+              <div>
+                <h4>Histórico</h4>
+                <textarea class="textareaTF" id="Historico"
+                  placeholder="Infância, relação com a família, contato com o Paranormal, eventos bons e ruins..."></textarea>
+              </div>
+              <div>
+                <h4>Objetivo</h4>
+                <textarea class="textareaTF" id="Objetivo"
+                  placeholder="Por que ele faz parte da Ordem? Porque luta contra o Outro Lado?"></textarea>
+              </div>
+              <button id="bntInfos" class="bnt1" style="margin-top: 4%;">Finalizar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="DivDND">
+        <div id="atributoDND">
+          <div style="margin-right: 20px;">
+            <h2> conjunto padrão de pontos [ <samp id="quinze">15</samp>, <samp id="catorze">14</samp>, <samp
+                id="treze">13</samp>,
+              <samp id="doze">12</samp>, <samp id="dez">10</samp>, <samp id="oito">8</samp>] para as habilidades
+            </h2>
+          </div>
+          <div>
+
+            <div class="DivaTributosDnD">
+              <div style="display: flex;">
+                <h2>Carisma</h2>
+                <input type="number" id="pontoCarisma" class="dropdown" value="" placeholder="0">
+              </div>
+            </div>
+
+            <div class="DivaTributosDnD">
+              <div style="display: flex;">
+                <h2>Constituição</h2>
+                <input type="number" class="dropdown" id="pontoConstituicao" value="" placeholder="0">
+              </div>
+            </div>
+
+            <div class="DivaTributosDnD">
+              <div style="display: flex;">
+                <h2>Destreza</h2>
+                <input type="number" class="dropdown" id="PontoDestreza" value="" placeholder="0">
+              </div>
+            </div>
+
+            <div class="DivaTributosDnD">
+              <div style="display: flex;">
+                <h2>Força</h2>
+                <input type="number" class="dropdown" id="pontoForca" value="" placeholder="0">
+              </div>
+            </div>
+
+            <div class="DivaTributosDnD">
+              <div style="display: flex;">
+                <h2>Sabedoria</h2>
+                <input type="number" class="dropdown" id="pontoSabedoria" value="" placeholder="0">
+              </div>
+            </div>
+
+            <div class="DivaTributosDnD">
+              <div style="display: flex;">
+                <h2>Inteligencia</h2>
+                <input type="number" class="dropdown" id="pontoInteligencia" placeholder="0">
+              </div>
+            </div>
+            <button id="ButtonAtributoDND" class="bnt1" style="margin-top: 4%;">Continuar</button>
+          </div>
+
+
+
+        </div>
+
+        <div id="DivRacaDND">
+          <div style="width: 50%;">
+
+
+            <div class="CardsRacaDND">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraAnao">V</h3>
+                  <H2 style="margin-left: 10px;">Anão</H2>
+                </div>
+              </div>
+
+              <div id="DivAnao" style="word-wrap: break-word;">
+
+                <div style=" border-bottom: 1px solid;">
+                  <div style="display: flex; margin: 12px; justify-content: space-between;">
+                    <h2>
+                      Anão da colina
+                    </h2>
+                    <button class="bnt1" id="EscolherRacaDNDAnaoColina"
+                      onclick="SelecionandoRaca('Anão', 'Anão da colina', 'Constituição', 2, 'Sabedoria', 1 )">Escolher</button>
+                  </div>
+                  <p>
+                    Aumento no Valor de Habilidade. Seu valor de
+                    Constituição aumenta em 2 e Sabedoria aumenta em 1.
+                  </p>
+                </div>
+
+                <div>
+                  <div style="display: flex; margin: 12px; justify-content: space-between;">
+                    <h2>
+                      Anão da montanha
+                    </h2>
+                    <button class="bnt1" id="EscolherRacaDNDAnaoMontanha"
+                      onclick="SelecionandoRaca('Anão', 'Anão da montanha', 'Constituição', 2, 'Força', 2 )">Escolher</button>
+                  </div>
+                  <p>
+                    Aumento no Valor de Habilidade. Seu valor de
+                    Constituição aumenta em 2 e Força aumenta em 2.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="CardsRacaDND">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraElfo">V</h3>
+                  <H2 style="margin-left: 10px;">Elfo</H2>
+                </div>
+              </div>
+
+              <div id="DivElfo" style="word-wrap: break-word;">
+
+                <div style=" border-bottom: 1px solid;">
+                  <div style="display: flex; margin: 12px; justify-content: space-between;">
+                    <h2>
+                      Alto Elfo
+                    </h2>
+                    <button class=" bnt1" id="EscolherRacaDNDElfoAlto"
+                      onclick="SelecionandoRaca('Elfo', 'Alto Elfo', 'Destreza', 2, 'Inteligência', 1 )">Escolher</button>
+                  </div>
+                  <p>
+                    Aumento no Valor de Habilidade. Seu valor de Destreza aumenta em 2 e
+                    Inteligência aumenta em 1
+                  </p>
+                </div>
+
+                <div style=" border-bottom: 1px solid;">
+                  <div style="display: flex; margin: 12px; justify-content: space-between;">
+                    <h2>
+                      Elfo da Floresta
+                    </h2>
+                    <button class="bnt1" id="EscolherRacaDNDElfoFloresta"
+                      onclick="SelecionandoRaca('Elfo', 'Elfo da Floresta', 'Destreza', 2, 'Sabedoria', 1 )">Escolher</button>
+                  </div>
+                  <p>
+                    Aumento no Valor de Habilidade. Seu valor de Destreza aumenta em 2 e
+                    Sabedoria aumenta em 1.
+                  </p>
+                </div>
+
+                <div>
+
+                  <div style="display: flex;  margin: 12px; justify-content: space-between;">
+                    <h2>
+                      Elfo Negro
+                    </h2>
+                    <button class="bnt1" id="EscolherRacaDNDElfoNegro"
+                      onclick="SelecionandoRaca('Elfo', 'Elfo Negro', 'Destreza', 2, 'Carisma', 1 )">Escolher</button>
+                  </div>
+                  <p>
+                    Aumento no Valor de Habilidade. Seu valor de Destreza aumenta em 2 e
+                    Carisma aumenta em 1
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="CardsRacaDND">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraHalfling">V</h3>
+                  <H2 style="margin-left: 10px;">Halfling</H2>
+                </div>
+
+              </div>
+              <div id="DivHalfling" style="word-wrap: break-word;">
+
+                <div style=" border-bottom: 1px solid;">
+                  <div style="display: flex; margin: 12px; justify-content: space-between;">
+                    <h2>
+                      Halfling Robusto
+                    </h2>
+                    <button class="bnt1" id="EscolherRacaDNDHalflingRobusto"
+                      onclick="SelecionandoRaca('Halfling', 'Halfling Robusto', 'Destreza', 2, 'Carisma', 1 )">Escolher</button>
+                  </div>
+                  <p>Aumento no Valor de Habilidade. Seu valor de Destreza aumenta em 2 e
+                    Carisma aumenta em 1.</p>
+                </div>
+
+                <div>
+                  <div style="display: flex; margin: 12px; justify-content: space-between;">
+                    <h2>
+                      Halfling Pés-leves
+                    </h2>
+                    <button class="bnt1" id="EscolherRacaDNDHalflingLeves"
+                      onclick="SelecionandoRaca('Halfling', 'Halfling Pés-leves', 'Destreza', 2, 'Constituição', 1 )">Escolher</button>
+                  </div>
+                  <p>
+                    Aumento no Valor de Habilidade. Seu valor de Destreza aumenta em 2 e
+                    Constituição aumenta em 1.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="CardsRacaDND">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraHumano">V</h3>
+                  <H2 style="margin-left: 10px;">Humano</H2>
+                </div>
+                <button class="bnt1" id="EscolherRacaDNDHumano">Escolher</button>
+              </div>
+              <div id="DivHumano" style="word-wrap: break-word;">
+                <p>
+                  Aumento no Valor de Habilidade. Todos os seus
+                  valores de habilidade aumentam em 1.
+                </p>
+              </div>
+            </div>
+
+            <div class="CardsRacaDND">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraDraconato">V</h3>
+                  <H2 style="margin-left: 10px;">Draconato</H2>
+                </div>
+                <button class="bnt1" id="EscolherRacaDNDDraconato"
+                  onclick="SelecionandoRaca('Draconato', ' ','Força', 2, 'Carisma', 1 )">Escolher</button>
+              </div>
+              <div id="DivDraconato" style="word-wrap: break-word;">
+                <p>
+                  Aumento no Valor de Habilidade. Seu valor de
+                  Força aumenta em 2 e seu valor de Carisma aumenta em
+                  1.
+                </p>
+              </div>
+            </div>
+
+            <div class="CardsRacaDND">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraGnomo">V</h3>
+                  <H2 style="margin-left: 10px;">Gnomo</H2>
+                </div>
+
+              </div>
+              <div id="DivGnomo" style="word-wrap: break-word;">
+
+                <div>
+                  <div style="display: flex; margin: 12px; justify-content: space-between;">
+                    <h2>
+                      Gnomo da Floresta
+                    </h2>
+                    <button class="bnt1" id="EscolherRacaDNDGnomoFloresta"
+                      onclick="SelecionandoRaca('Gnomo', 'Gnomo da Floresta','Inteligência', 2, 'Destreza', 1 )">Escolher</button>
+                  </div>
+                  <p>
+                    Aumento no Valor de Habilidade. Seu valor de Inteligência aumenta em 2 e
+                    Destreza aumenta em 1.
+                  </p>
+                </div>
+
+                <div>
+                  <div style="display: flex; margin: 12px; justify-content: space-between;">
+                    <h2>
+                      Gnomo Rochas
+                    </h2>
+                    <button class="bnt1" id="EscolherRacaDNDGnomoRochas"
+                      onclick="SelecionandoRaca('Gnomo', 'Gnomo Rochas','Inteligência', 2, 'Constituição', 1 )">Escolher</button>
+                  </div>
+                  <p>
+                    Aumento no Valor de Habilidade. Seu valor de Inteligência aumenta em 2 e
+                    Constituição aumenta em 1.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="CardsRacaDND">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraMeioElfo">V</h3>
+                  <H2 style="margin-left: 10px;">Meio-Elfo</H2>
+                </div>
+                <button class="bnt1" id="EscolherRacaDNDMeioElfo"
+                  onclick="SelecionandoRaca('Meio-Elfo', ' ', 'Carisma', 2)">Escolher</button>
+              </div>
+              <div id="DivMeioElfo" style="word-wrap: break-word;">
+                <div>
+                  <p>
+                    Aumento no Valor de Habilidade. Seu valor de
+                    Carisma aumenta em 2 e outros dois valores de
+                    habilidade, à sua escolha, aumentam em 1. </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="CardsRacaDND">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraMeioOrc">V</h3>
+                  <H2 style="margin-left: 10px;">Meio-Orc</H2>
+                </div>
+                <button class="bnt1" id="EscolherRacaDNDMeioOrc"
+                  onclick="SelecionandoRaca('Meio-Orc', ' ','Força', 2, 'Constituição', 1 )">Escolher</button>
+              </div>
+              <div id="DivMeioOrc" style="word-wrap: break-word;">
+                <div>
+                  <p>
+                    Aumento no Valor de Habilidade. Seu valor de
+                    Força aumenta em 2 e seu valor de Constituição
+                    aumenta em 1. </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="CardsRacaDND">
+              <div
+                style="display: flex; align-items: center; justify-content: space-between; border-bottom: #00ff40 solid;">
+                <div style="display: flex; align-items: center;">
+                  <h3 id="MostraTiefling">V</h3>
+                  <H2 style="margin-left: 10px;" onclick="SelecionandoRaca('Carisma', 2, 'Inteligência', 1 )">Tiefling
+                  </H2>
+                </div>
+                <button class="bnt1" id="EscolherRacaDNDTiefling">Escolher</button>
+              </div>
+              <div id="DivTiefling" style="word-wrap: break-word;">
+                <div>
+                  <p>
+                    Aumento no Valor de Habilidade. Seu valor de
+                    Inteligência aumenta em 1 e seu valor de Carisma
+                    aumenta em 2.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <div id="DivClassDND">
+
+      </div>
+
+    </div>
+    <div id="DivVer">
+      <div class="TabLateral" id="TabLateral">
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="funcaoApp.js"></script>
+
+</body>
+
+</html>
